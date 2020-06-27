@@ -32,12 +32,12 @@ export const markRequestCompleted = async (mySelectedRequestId) => {
 export const replyToConversation = async (offerId, message) => {
   try {
     await axios.post(
-      `/offers/${offerId}/messages`,
-      { content: message },
+      `/messages`,
+      { content: message, offer_id: offerId },
       { headers: createHeaders() }
     );
     return true;
-  } catch (error) {
+  } catch (error) { 
     console.error(error);
     return false;
   }
